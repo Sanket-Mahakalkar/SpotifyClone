@@ -2,6 +2,7 @@ package com.example.spotifyclone.exoplayer
 
 import android.os.SystemClock
 import android.support.v4.media.session.PlaybackStateCompat
+import android.util.Log
 
 inline  val PlaybackStateCompat.isPrepared
     get() = state == PlaybackStateCompat.STATE_BUFFERING ||
@@ -22,5 +23,6 @@ inline val PlaybackStateCompat.currentPlaybackPosition: Long
         val timeDelta = SystemClock.elapsedRealtime() - lastPositionUpdateTime
         (position + (timeDelta * playbackSpeed)).toLong()
     }else{
+        Log.d("PlaybackStateCompat_POSITION", position.toString())
         position
     }

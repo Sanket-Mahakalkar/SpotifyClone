@@ -1,5 +1,6 @@
 package com.example.spotifyclone.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,6 +37,7 @@ class SongViewModel @Inject constructor(
                 val pos = playbackState.value?.currentPlaybackPosition
                 if(curPlayerPosition.value != pos){
                     _curPlayerPosition.postValue(pos)
+                    Log.d("PlaybackStateCompat_CUR_SONG_DURATION",MusicService.curSongDuration.toString())
                     _curSongDuration.postValue(MusicService.curSongDuration)
                 }
                 delay(Constants.UPDATE_PLAYER_POSITION_INTERVAL)
